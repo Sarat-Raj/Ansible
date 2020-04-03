@@ -1,0 +1,18 @@
+---
+
+- name: Network getting started First Playbook
+#connection: network cli
+#gather_facts: false
+  hosts: all
+  tasks:
+    # -name: Get config for VyOS
+    #  vyos_facts:
+    #    gather_subset:all
+    - name: Display the config
+      debug:
+        msg: "the host name is local host"
+    - name: Install apache httpd (State-Present is optional)
+      apt:
+        name: python-numpy
+        state: present
+      become: true
