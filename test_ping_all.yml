@@ -1,0 +1,6 @@
+  - name: ping_all devices
+    hosts: all
+    gather_facts: false
+    tasks:
+      - name: pinging all devices
+        ping:

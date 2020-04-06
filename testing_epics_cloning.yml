@@ -1,0 +1,6 @@
+- name: "cloning epics into localhost machine"
+  hosts: localhost
+  tasks: 
+    - git:
+        repo: "https://github.com/epics-base/epics-base.git"
+        dest: /home/sarat/Downloads/epics_base

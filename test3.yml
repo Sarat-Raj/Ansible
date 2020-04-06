@@ -1,0 +1,12 @@
+- hosts: all
+  tasks:
+  - name: Ansible apt with_items example
+    apt:
+      name: "{{ item }}"
+      #update_cache: true
+      state: present
+    with_items:
+      - 'make'
+      - 'gcc'
+      - 'g++'
+    become: true
