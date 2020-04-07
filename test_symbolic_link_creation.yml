@@ -1,0 +1,8 @@
+- name: Create a symbolic link
+  hosts: localhost
+  tasks:
+  - file:
+      src: /usr/local/epics/epics_base
+      dest: /usr/local/epics/epb
+      state: link
+    become: true
