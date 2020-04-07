@@ -1,6 +1,7 @@
-- name: "cloning epics into localhost machine"
+- name: "cloning epics VERSION 3.15 into localhost machine"
   hosts: localhost
   tasks: 
     - git:
         repo: "https://github.com/epics-base/epics-base.git"
         dest: /home/sarat/Downloads/epics_base
+        version: 3.15

@@ -1,0 +1,7 @@
+- name: "Installing epics in the location /usr/local/epics"
+  hosts: localhost
+  tasks: 
+  - name: "copying downloaded epics into /usr/local"
+    copy: 
+      src: /home/sarat/Downloads/epics_base
+      dest: /usr/local/epics

@@ -1,0 +1,29 @@
+- name: "Installing epics in the location /usr/local/epics"
+  hosts: localhost
+  tasks: 
+  - name: "cloning epics into localhost machine's Download folder"
+    git:
+      repo: "https://github.com/epics-base/epics-base.git"
+      dest: /home/sarat/Downloads/epics_base
+      version: 3.15
+   - name: "copying downloaded epics into /usr/local"
+     copy: 
+      src: /home/sarat/Downloads
+      dest: /usr/local/epics
+      
+
+
+
+- name: "installing required softwares" 
+  hosts: localhost
+  tasks:
+  - name: Ansible apt with_items example
+    apt:
+      name: "{{ item }}"
+      state: present
+    with_items:
+      - 'make'
+      - 'gcc'
+      - 'g++'
+      - 'rpm'
+    become: true
