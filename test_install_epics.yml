@@ -6,17 +6,17 @@
       repo: "https://github.com/epics-base/epics-base.git"
       dest: /home/sarat/Downloads/epics_base
       version: 3.15
-   - name: "copying downloaded epics into /usr/local"
-     copy: 
+  - name: "copying downloaded epics into /usr/local"
+    copy: 
       src: /home/sarat/Downloads
       dest: /usr/local/epics
-      
-
-
-
-- name: "installing required softwares" 
-  hosts: localhost
-  tasks:
+    become: true
+  - name: Creating a symbolic link
+    file:
+      src: /usr/local/epics/epics_base
+      dest: /usr/local/epics/epics
+      state: link
+    become: true 
   - name: Ansible apt with_items example
     apt:
       name: "{{ item }}"
