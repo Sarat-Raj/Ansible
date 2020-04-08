@@ -3,6 +3,6 @@
   tasks:
   - file:
       src: /usr/local/epics/epics_base
-      dest: /usr/local/epics/epb
+      dest: /usr/local/epics/epics_s
       state: link
     become: true 

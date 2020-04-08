@@ -14,10 +14,10 @@
   - name: Creating a symbolic link
     file:
       src: /usr/local/epics/epics_base
-      dest: /usr/local/epics/epics
+      dest: /usr/local/epics/epics_s
       state: link
     become: true 
-  - name: Ansible apt with_items example
+  - name: "Ansible apt with_items example"
     apt:
       name: "{{ item }}"
       state: present
@@ -27,3 +27,7 @@
       - 'g++'
       - 'rpm'
     become: true
+  - name: "making in epics base"
+    file:
+    - make: 
+    
