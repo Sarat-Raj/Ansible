@@ -1,0 +1,6 @@
+- name: Run 'install' target as root
+  hosts: localhost
+  tasks:
+  - make:
+      chdir: /usr/local/epics/epics_s
+    become: yes

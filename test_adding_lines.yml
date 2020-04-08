@@ -1,0 +1,12 @@
+- name: "adding paths into .bashrc"
+  hosts: localhost
+  tasks:
+  - blockinfile:
+      path: /home/sarat/.bashrc
+      block: |
+        # adding epic paths here
+        #EPICS
+        export EPICS_BASE = /usr/local/epics/epics_s
+        export EPICS_HOST_ARCH = $(${EPICS_BASE}/startup/EpicsHostArch)
+        export PATH = ${EPICS_BASE}/bin/${EPICS_HOST_ARCH}:${PATH}
+      
