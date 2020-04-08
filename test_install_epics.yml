@@ -6,17 +6,20 @@
       repo: "https://github.com/epics-base/epics-base.git"
       dest: /home/sarat/Downloads/epics_base
       version: 3.15
+  
   - name: "copying downloaded epics into /usr/local"
     copy: 
       src: /home/sarat/Downloads
       dest: /usr/local/epics
     become: true
+
   - name: Creating a symbolic link
     file:
       src: /usr/local/epics/epics_base
       dest: /usr/local/epics/epics_s
       state: link
     become: true 
+  
   - name: "Ansible apt with_items example"
     apt:
       name: "{{ item }}"
@@ -27,7 +30,18 @@
       - 'g++'
       - 'rpm'
     become: true
+
+  - name: "adding paths into .bashrc"
+    blockinfile:
+      path: /home/sarat/.bashrc
+      block: |
+        # adding epic paths here
+        #EPICS
+        export EPICS_BASE = /usr/local/epics/epics_s
+        export EPICS_HOST_ARCH = $(${EPICS_BASE}/startup/EpicsHostArch)
+        export PATH = ${EPICS_BASE}/bin/${EPICS_HOST_ARCH}:${PATH}
+      
   - name: "making in epics base"
     file:
     - make: 
-    
+ 
